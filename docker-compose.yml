@@ -26,7 +26,7 @@ services:
     restart: always
     volumes:
       - ./data/matomo:/var/www/html:ro
-      - ./root/certs:/root/certs
+      - /root/certs:/root/certs
     ports:
       - 80:80
       - 443:443
