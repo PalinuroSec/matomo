@@ -30,14 +30,14 @@ server {
     index index.php;
 
     ## only allow accessing the following php files
-    location ~ ^/(index|matomo|piwik|js/index|plugins/HeatmapSessionRecording/configs)\.php {
+    location ~ ^/(index|matomo|piwik|js/index|plugins/HeatmapSessionRecording/configs|misc/cron/archive)\.php {
         include snippets/php-fpm.conf;
     }
 
     ## deny access to all other .php files
     location ~* ^.+\.php$ {
         deny all;
-        return 403;
+        return 404;
     }
 
     ## serve all other files normally
@@ -48,12 +48,12 @@ server {
     ## disable all access to the following directories
     location ~ ^/(config|tmp|core|lang) {
         deny all;
-        return 403; # replace with 404 to not show these directories exist
+        return 404; # replace with 404 to not show these directories exist
     }
 
     location ~ /\.ht {
         deny  all;
-        return 403;
+        return 404;
     }
 
     location ~ js/container_.*_preview\.js$ {
@@ -72,7 +72,7 @@ server {
 
     location ~ ^/(libs|vendor|plugins|misc/user|node_modules) {
         deny all;
-        return 403;
+        return 404;
     }
 
     ## properly display textfiles in root directory
