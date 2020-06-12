@@ -14,7 +14,7 @@ services:
 
   php:
     container_name: php
-    image: php:7.3-fpm-buster
+    build: ./php
     volumes:
       - ./data/matomo:/var/www/html
     expose:
