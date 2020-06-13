@@ -6,13 +6,12 @@ services:
     restart: always
     volumes:
       - ./data/db:/var/lib/mysql
+      - ./data/matomo:/var/www/html
     environment:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_DATABASE
       - MYSQL_USER
       - MYSQL_PASSWORD
-    volumes:
-      - ./data/matomo:/var/www/html
 
   php:
     container_name: php
